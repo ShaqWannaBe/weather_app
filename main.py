@@ -5,23 +5,31 @@ Then it will notify users of the weather.
 
 """
 
-#import pyowm.owm import OWM
 import requests
 import json
 
 api_key = '22eca9c04a24c301da463fa57a955b0a'
 lat = '33.293160'
 lon = '-112.037024'
+units = 'imperial'      # Use either metric or imperial
 
-url = f'https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude=minutely,hourly&appid={api_key}'
+url = f'https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&units={units}&exclude=minutely,hourly&appid={api_key}'
 
 res = requests.get(url)
-data = res.json
+data = res.json()
 
-temp = data['current']['temperature']
+#prints the result of the api call
+#print(data)
 
-print(temp)
+#round the current temp and turn it into an integer
+temp = int(round(data['current']['temp'],0))
+feels_like = (int(round(data['current']['feels_like'])))
+condition = data['current']['weather']
 
+#print welcome
+print('*** WELCOME TO THE WEATHER APP ***')
+print('* Current Temp: ' + str(temp) + ' °F')
+print('* Feels like: ' + str(feels_like) + ' °F')
 
 
 
