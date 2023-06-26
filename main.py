@@ -19,7 +19,7 @@ res = requests.get(url)
 data = res.json()
 
 #prints the result of the api call
-#print(data)
+# print(data)
 
 #round the current temp and turn it into an integer
 temp = int(round(data['current']['temp'],0))
@@ -27,7 +27,7 @@ feels_like = (int(round(data['current']['feels_like'])))
 condition = data['current']['weather']
 
 #print welcome
-print('*** WELCOME TO THE WEATHER APP ***')
+print('\n*** WELCOME TO THE WEATHER APP ***')
 print('* Current Temp: ' + str(temp) + ' °F')
 print('* Feels like: ' + str(feels_like) + ' °F')
 
