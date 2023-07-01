@@ -5,10 +5,15 @@ Then it will notify users of the weather.
 
 """
 
+import os
+from dotenv import load_dotenv
 import requests
 import json
+from colorama import Fore as FORE
 
-api_key = '22eca9c04a24c301da463fa57a955b0a'
+load_dotenv() #loads .env file contents
+api_key = os.getenv("API_KEY")
+
 lat = '33.293160'
 lon = '-112.037024'
 units = 'imperial'      # Use either metric or imperial
@@ -19,7 +24,7 @@ res = requests.get(url)
 data = res.json()
 
 #prints the result of the api call
-# print(data)
+# print(f'{FORE.RED}{res}{FORE.RESET}')
 
 #round the current temp and turn it into an integer
 temp = int(round(data['current']['temp'],0))
